@@ -2,6 +2,7 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 
@@ -12,7 +13,24 @@
     --card-pink:#FFF3F3;
     --text-color:#3F3F4C;
     --base-black:#000000;
+
 }
+
+.btn-bd-primary {
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--base-red);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
+    --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
+    --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
+    
+  }
+
 
 body{
     background-color: white;
@@ -23,28 +41,56 @@ a{
     text-decoration: none !important;
     
 }
-header{
-    padding: 0 5rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+.color-red{
+    color: var(--base-red) !important;
+}
+.bg-color-red{
+    background-color: var(--base-red) !important;
 
 }
-.img-header{
-    width: 5rem;
-    height: 3rem;
+.border-red{
+    border-color: var(--base-red) !important;
 }
-.navbar ul{
-    display: flex;
-    text-decoration: none;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    gap:4rem;
+.bg-grey-base{
+    background-color: var(--base-gray);
+}
+
+.bg-image{
+    background-size:cover;
+    background-position: center;
+}
+
+
+.card-size{
+    width: 12.75rem;
+}
+
+.custom-btn-primary {
+    /* Cor de fundo */
+    background-color: var(--base-red);
+    /* Cor do texto */
+    color: var(--base-white);
+    /* Borda */
+    border: 1px solid var(--base-red);
+    /* Efeito de hover (opcional) */
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito de hover (opcional) */
+.custom-btn-primary:hover {
+    background-color: #fc6666;
+}
+
+.map-responsive{
+
+    overflow:hidden
+
+}
+
+.map-responsive iframe{
     
-}
-.navbar-itens{
-    color: var(--text-color);
-    font-weight: 300;
+    min-height:27.75;
+
+    min-width:46.813;
+    
 }
