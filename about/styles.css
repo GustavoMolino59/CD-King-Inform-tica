@@ -1,0 +1,39 @@
+  @media (min-width: 768px) {
+    .custom-height-banner {
+      min-height: 20rem; /* Altura para telas maiores que 768px */
+    }
+  }
+  @media (min-width: 992px) {
+    .custom-height-banner {
+      min-height: 40rem; /* Altura para telas maiores que 992px */
+    }
+  }
+
+
+  @media (min-width: 992px) {
+    .big-font {
+        font-size: 5rem; /* Altura para telas maiores que 768px */
+    }
+  }
+  
+
+
+.custom-btn-whatsapp {
+    /* Cor de fundo */
+    background-color: #008939;
+    /* Cor do texto */
+    color: var(--base-white);
+    /* Borda */
+    border: 1px solid #008939;
+    /* Efeito de hover (opcional) */
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito de hover (opcional) */
+.custom-btn-whatsapp:hover {
+    background-color: #038539;
+}
+
+.bg-button-logo-wpp{
+  background-color: #00BC5D;
+}
