@@ -2,7 +2,19 @@
     .custom-height-banner {
       min-height: 20rem; /* Altura para telas maiores que 768px */
     }
+    .custom-size-svg{
+      height: 56px !important;
+      width: 56px !important;
+    }
+    
   }
+  @media (max-width:767px) {
+    .custom-size-svg{
+      height: 30px !important;
+      width: 30px !important;
+    }
+  }
+  
   @media (min-width: 992px) {
     .custom-height-banner {
       min-height: 40rem; /* Altura para telas maiores que 992px */
@@ -37,3 +49,5 @@
 .bg-button-logo-wpp{
   background-color: #00BC5D;
 }
+
+
