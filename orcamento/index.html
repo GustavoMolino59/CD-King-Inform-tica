@@ -1,222 +1,78 @@
+<!-- Componente HTML expandido -->
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="AM2S Soluções em Tecnologia" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      name="description"
+      content="Faça o orçamento para consertos e compras dos seus Notebooks, Laptops e Desktops"
+    />
+    <meta
+      name="keywords"
+      content="assistência técnica, venda de computadores, troca de computadores, desktops, hardware, acessórios, CD King Informática"
+    />
+    <title>CD King | Conheça a nossa história</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="AM2S Soluções em Tecnologia" />
-  <meta name="robots" content="index, follow" />
-  <meta name="description"
-    content="A CD King Informatica, criada em 1995 segue sendo Referência em qualidade de Pcs e desktops de alta tecnologia" />
-  <meta name="keywords"
-    content="assistência técnica, venda de computadores, troca de computadores, desktops, hardware, acessórios, CD King Informática" />
-  <title>CD King | Conheça a nossa história</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org/",
+        "@type": "LocalBusiness",
+        "name": "CD King Informática",
+        "image": "https://www.cdking.com.br/assets/logo.png",
+        "url": "https://www.cdking.com.br",
+        "telephone": "(11) 95745-6218",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "R. Dr. Albuquerque Lins,1105",
+          "addressLocality": "São Paulo",
+          "addressRegion": "SP",
+          "postalCode": "01230-001",
+          "addressCountry": "BR"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "18:00"
+          }
+        ]
+      }
+    </script>
+  </head>
 
-  <!-- Open Graph Tags -->
-  <meta property="og:title" content="CD King | Conheça a nossa história" />
-  <meta property="og:description"
-    content="Assistência técnica especializada, venda e troca de computadores, desktops, hardware e acessórios. Encontre a tecnologia que você precisa" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.cdking.com.br" />
-  <meta property="og:image" content="https://www.cdking.com.br/assets/logo.png" />
-
-  <!-- Twitter Card Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="CD King | Conheça a nossa história" />
-  <meta name="twitter:description"
-    content="Assistência técnica especializada, venda e troca de computadores, desktops, hardware e acessórios. Encontre a tecnologia que você precisa" />
-  <meta name="twitter:image" content="https://www.cdking.com.br/assets/logo.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-  <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="styles.css" />
-  <script type="application/ld+json">
-            {
-              "@context": "http://schema.org/",
-              "@type": "LocalBusiness",
-              "name": "CD King Informática",
-              "image": "https://www.cdking.com.br/assets/logo.png",
-              "url": "https://www.cdking.com.br",
-              "telephone": "(11) 95745-6218",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "R. Dr. Albuquerque Lins,1105",
-                "addressLocality": "São Paulo",
-                "addressRegion": "SP",
-                "postalCode": "01230-001",
-                "addressCountry": "BR"
-              },
-              "openingHoursSpecification": [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday"
-                  ],
-                  "opens": "08:00",
-                  "closes": "18:00"
-                }
-              ]
-            }
-        </script>
-</head>
-
-<body>
-  <header>
-    <nav class="container-fluid navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <div class="container d-flex">
-          <a class="navbar-brand" href="/">
-            <img src="../assets/header/Imagem3-1.webp" alt="Logo CD King Informática" width="70" />
-          </a>
-          <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-
-        <div class="collapse navbar-collapse container-fluid align-items-end justify-content-end" id="navbarNav">
-          <ul class="navbar-nav gap-5">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/about">Sobre nós</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/orcamento">Orçamento</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/produto">Produto</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <main class="container-fluid p-0">
-    <div class="container-fluid bg-black p-0">
-      <div id="initial-banner" class="bg-image custom-height-banner col align-content-center justify-content-center p-4"
-        style="background-image: url('../assets/about/BannerInicial-About.webp');">
-        <h1 class="display-1 big-font fw-bold text-white"><span class="display-4 fw-bold">Sobre a </span><br> CD King
-          Informática</h1>
-      </div>
-    </div>
-    <div id="nossa-historia-banner" class="container-fluid pt-5">
-      <div class="row my-auto mt-5 p-5 ">
-        <div class="col-lg-5 col-12 d-flex align-content-center flex-column">
-          <h2 class="fw-bold display-3 text-black">Nossa <span class="fw-bold color-red">história</span></h2>
-          <p class="fw-light fs-md-4 fs-6">Nesses 30 anos de existência, nos orgulhamos de estar no mesmo local, com
-            nossos
-            clientes fiéis. Com uma
-            loja física localizada no coração de higiênópolis, para que o cliente possa vir pessoalmente e ser atendido
-            com toda <span class="fw-bold color-red">atenção</span> e <span class="fw-bold color-red">acolhimento</span>
-            de modo a superar suas expectativas. A eficiência de nossos <span class="color-red">técnicos</span> e a
-            <span class="fw-bold color-red">idoneidade</span> da empresa são os nossos diferenciais neste mundo
-            competitivo da informática.
-            Conosco você encontrará uma gama de serviços que o ajudarão a <span class="fw-bold color-red">solucionar
-              problemas</span> de informática na sua
-            residência e na sua empresa.
-          </p>
-        </div>
-        <div class="col-lg-6 col-12 d-flex align-content-center justify-content-lg-end justify-content-center">
-          <img src="../assets/about/FotoFaixada.webp" class="img-fluid rounded-circle w-75" />
-        </div>
-      </div>
-    </div>
-    <div id="nossa-missao-banner" class="container-fluid pt-5 bg-grey-base">
-      <div class="row my-auto p-5 ">
-        <div class="col-lg-6 col-12 d-flex align-content-center justify-content-lg-start justify-content-center">
-          <img src="../assets/about/CdKingMarcio.webp" class="img-fluid rounded-circle w-75" />
-        </div>
-        <div class="col-lg-5 col-12 d-flex align-content-center flex-column justify-content-center">
-          <h2 class="fw-bold display-3 text-white">Nossa <span class="fw-bold color-red">Missão</span></h2>
-          <p class="fw-light fs-lg-4 fs-6 text-white">Na vanguarda da inovação tecnológica, nossa missão é compreender
-            profundamente as <span class="fw-bold">necessidades individuais</span> de cada cliente. Nos dedicamos a
-            desenvolver e implementar
-            <span class="fw-bold">soluções personalizadas</span> que não apenas atendam, mas superem as expectativas.
-            Empregamos as mais recentes
-            tecnologias para garantir <span class="fw-bold">excelência operacional</span>, resultando em satisfação
-            incomparável para todos os nossos
-            clientes.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div id="container-tecnologias" class="container-fluid">
-      <div class="container d-flex align-items-center justify-content-center">
-        <div class="border-red border-bottom">
-          <h2 class="fw-bold text-black fs-2 mt-5">Como te entregamos tecnologias? </h2>
-        </div>
-      </div>
-      <div class="row row-cols-md-3 mt-5 g-3">
-        <div id="Card-1 " class="col-12  ">
-          <div class="card h-100">
-            <img src="..\assets\about\Rectangle-9.webp" class="card-img-top" alt="circuito eletrico com uma lupa">
-            <div class="card-body">
-              <h5 class="card-title">Atenção nos desafios</h5>
-              <p class="card-text">Sabemos que para nossos clientes, seus dispositivos são extensões de suas vidas. Por
-                isso, abordamos cada problema com a máxima atenção e precisão, assegurando um diagnóstico exato e
-                soluções confiáveis.</p>
-
-            </div>
-          </div>
-        </div>
-        <div id="Card-2" class="col-12">
-          <div class="card h-100">
-            <img src="..\assets\about\Rectangle-9-1.webp" class="card-img-top" alt="medico operando um circuito">
-            <div class="card-body">
-              <h5 class="card-title">Precisão é a chave</h5>
-              <p class="card-text">Cada dispositivo é um universo complexo. Por isso, nos dedicamos a reparos precisos
-                para garantir que cada celular volte a funcionar como novo.</p>
-
-            </div>
-          </div>
-        </div>
-        <div id="Card-3" class="col-12">
-          <div class="card h-100">
-            <img src="..\assets\about\Rectangle-9-2.webp" class="card-img-top"
-              alt="circuito com estrelas representando qualidade">
-            <div class="card-body">
-              <h5 class="card-title">Compromisso com a qualidade</h5>
-              <p class="card-text">Sabemos que para nossos clientes, seus dispositivos são extensões de suas vidas. Por
-                isso, abordamos cada problema com a máxima atenção e precisão, assegurando um diagnóstico exato e
-                soluções confiáveis.</p>
-
-            </div>
-          </div>
-        </div>
-        <div id="Card-4" class="col-12">
-          <div class="card h-100">
-            <img src="..\assets\about\Rectangle-9-3.webp" class="card-img-top" alt="tecnico arrumando um computador">
-            <div class="card-body">
-              <h5 class="card-title">Tecnologia e técnica de ponta</h5>
-              <p class="card-text">Estamos sempre atualizados com as últimas tendências e técnicas para oferecer
-                soluções avançadas e eficazes.</p>
-
-            </div>
-          </div>
-        </div>
-        <div id="Card-5" class="col-12">
-          <div class="card h-100">
-            <img src="..\assets\about\Rectangle-9-4.webp" class="card-img-top" alt="Homem vendo papel com uma lupa">
-            <div class="card-body">
-              <h5 class="card-title">Atendimento personalizado</h5>
-              <p class="card-text">Entendemos que cada cliente é único. Oferecemos soluções personalizadas para atender
-                às suas necessidades específicas.</p>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <body>
+    <div id="app"></div>
     <div id="container-fale-conosco" class="container-fluid bg-grey-base pb-5">
       <div class="container d-flex align-items-center justify-content-center">
         <div class="border-red border-bottom">
@@ -443,10 +299,14 @@
         </div>
       </nav>
     </footer>
-  </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-</body>
 
-</html
+    <script type="module" src="./app.js"></script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script type="module" src="./services/sendEmail.js"></script>
+  </body>
+</html>

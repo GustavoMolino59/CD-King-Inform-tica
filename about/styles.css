@@ -30,24 +30,5 @@
   
 
 
-.custom-btn-whatsapp {
-    /* Cor de fundo */
-    background-color: #008939;
-    /* Cor do texto */
-    color: var(--base-white);
-    /* Borda */
-    border: 1px solid #008939;
-    /* Efeito de hover (opcional) */
-    transition: background-color 0.3s ease;
-}
-
-/* Efeito de hover (opcional) */
-.custom-btn-whatsapp:hover {
-    background-color: #038539;
-}
-
-.bg-button-logo-wpp{
-  background-color: #00BC5D;
-}
 
 
