@@ -12,12 +12,12 @@ export default defineComponent({
   setup(props) {
     const item = ref("");
     const model = ref("");
-   
+
     const name = ref("");
     const email = ref("");
     const cep = ref("");
     const wpp = ref("");
-    const obs = ref("")
+    const obs = ref("");
 
     const itemError = ref(false);
     const modelError = ref(false);
@@ -27,10 +27,20 @@ export default defineComponent({
     const wppError = ref(false);
 
     async function onSubmit() {
-        console.log()
-        validate();
-        enviarEmail({ item: item.value, model: model.value, name: name.value, email: email.value, cep: cep.value, wpp: wpp.value, obs: obs.value });
+      console.log();
+      const validated = validate();
+      if (validated) {
+        enviarEmail({
+          item: item.value,
+          model: model.value,
+          name: name.value,
+          email: email.value,
+          cep: cep.value,
+          wpp: wpp.value,
+          obs: obs.value,
+        });
         const response = await enviarEmail({
+          tipoOrcamento: "Consultoria em Informática e Serviços",
           item: item.value,
           model: model.value,
           name: name.value,
@@ -40,25 +50,61 @@ export default defineComponent({
           obs: obs.value,
         });
         if (response) {
-          document.getElementById("tooltip-sucess-services").classList.add("show");
+          document
+            .getElementById("tooltip-sucess-services")
+            .classList.add("show");
         } else {
-          document.getElementById("tooltip-error-services").classList.add("show");
+          document
+            .getElementById("tooltip-error-services")
+            .classList.add("show");
         }
       }
+    }
 
     function validate() {
-        item.value.length === 0  ? (itemError.value = true) : (itemError.value = false);
-        model.value.length === 0 ? (modelError.value = true) : (modelError.value = false);
-        name.value.length === 0 ? (nameError.value = true) : (nameError.value = false);
-        email.value.length === 0 ? (emailError.value = true) : (emailError.value = false);
-        cep.value.length === 0 ? (cepError.value = true) : (cepError.value = false);
-        wpp.value.length === 0 ? (wppError.value = true) : (wppError.value = false);
+      let error = false;
+      item.value.length === 0
+        ? ((itemError.value = true), (error = true))
+        : (itemError.value = false);
+      model.value.length === 0
+        ? ((modelError.value = true), (error = true))
+        : (modelError.value = false);
+      name.value.length === 0
+        ? ((nameError.value = true), (error = true))
+        : (nameError.value = false);
+      email.value.length === 0
+        ? ((emailError.value = true), (error = true))
+        : (emailError.value = false);
+      cep.value.length === 0
+        ? ((cepError.value = true), (error = true))
+        : (cepError.value = false);
+      wpp.value.length === 0
+        ? ((wppError.value = true), (error = true))
+        : (wppError.value = false);
+      if (error) {
+        return false;
       }
+      return true;
+    }
 
-    return {obs, item, itemError, model, modelError, name, nameError, email, emailError, cep, cepError, wpp, wppError, onSubmit};
+    return {
+      obs,
+      item,
+      itemError,
+      model,
+      modelError,
+      name,
+      nameError,
+      email,
+      emailError,
+      cep,
+      cepError,
+      wpp,
+      wppError,
+      onSubmit,
+    };
   },
-  template:
-  /*html*/ `
+  template: /*html*/ `
   <div id="tooltip-error-services" class="toast align-items-center text-bg-danger border-0 tooltip" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex">
       <div class="toast-body">

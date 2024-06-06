@@ -28,22 +28,25 @@ export default defineComponent({
     const cepError = ref(false);
     const wppError = ref(false);
     async function onSubmit() {
-      validate();
-      const response = await enviarEmail({
-        item: item.value,
-        model: model.value,
-        defeito: defeito.value,
-        name: name.value,
-        email: email.value,
-        cep: cep.value,
-        wpp: wpp.value,
-        obs: obs.value,
-        file: file.value,
-      });
-      if (response) {
-        document.getElementById("tooltip-sucess").classList.add("show");
-      } else {
-        document.getElementById("tooltip-error").classList.add("show");
+      const validated = validate();
+      if (validated) {
+        const response = await enviarEmail({
+          tipoOrcamento: "Assistencia tecnica",
+          item: item.value,
+          model: model.value,
+          defeito: defeito.value,
+          name: name.value,
+          email: email.value,
+          cep: cep.value,
+          wpp: wpp.value,
+          obs: obs.value,
+          file: file.value,
+        });
+        if (response) {
+          document.getElementById("tooltip-sucess").classList.add("show");
+        } else {
+          document.getElementById("tooltip-error").classList.add("show");
+        }
       }
     }
 
@@ -55,27 +58,40 @@ export default defineComponent({
     }
 
     function validate() {
+      let error = false; // Inicialize error como false antes das verificações
+
       item.value.length === 0
-        ? (itemError.value = true)
+        ? ((itemError.value = true), (error = true))
         : (itemError.value = false);
+
       model.value.length === 0
-        ? (modelError.value = true)
+        ? ((modelError.value = true), (error = true))
         : (modelError.value = false);
+
       defeito.value.length === 0
-        ? (defeitoError.value = true)
+        ? ((defeitoError.value = true), (error = true))
         : (defeitoError.value = false);
+
       name.value.length === 0
-        ? (nameError.value = true)
+        ? ((nameError.value = true), (error = true))
         : (nameError.value = false);
+
       email.value.length === 0
-        ? (emailError.value = true)
+        ? ((emailError.value = true), (error = true))
         : (emailError.value = false);
+
       cep.value.length === 0
-        ? (cepError.value = true)
+        ? ((cepError.value = true), (error = true))
         : (cepError.value = false);
+
       wpp.value.length === 0
-        ? (wppError.value = true)
+        ? ((wppError.value = true), (error = true))
         : (wppError.value = false);
+
+      if (error) {
+        return false;
+      }
+      return true;
     }
     return {
       onFileChange,
@@ -121,8 +137,8 @@ export default defineComponent({
           <div class="col-6">
           <select v-model="item" id="select-item-repair" :class="['form-select', itemError? 'is-invalid': '']" aria-label="Default select example" required>
             <option selected disabled value="">Qual item você precisa de assistência</option>
-            <option value="1">Notebook</option>
-            <option value="2">Desktop</option>
+            <option value="Notebook">Notebook</option>
+            <option value="Desktop">Desktop</option>
           </select>
           <div class="invalid-feedback ">
             Selecione um item
@@ -194,9 +210,8 @@ export default defineComponent({
         <div class="row">
           <div class="col">
             <div class="form-floating">
-              <textarea v-model="obs" class="form-control" placeholder="Descreva o problema" id="floatingTextarea2" style="height: 100px"></textarea>
-              <label for="floatingTextarea2">Descreva o problema</label>
-              <span class="form-text">*obrigatório</span>
+              <textarea v-model="obs" class="form-control" placeholder="Observações" id="floatingTextarea2" style="height: 100px"></textarea>
+              <label for="floatingTextarea2">Observações</label>
             </div>
           </div>
         </div>

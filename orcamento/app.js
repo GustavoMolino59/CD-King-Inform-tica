@@ -43,7 +43,7 @@ import FormServices from './components/FormServices.js';
                   <a class="nav-link" href="/orcamento">Orçamento</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/produto">Produto</a>
+                  <a class="nav-link" href="/produtos">Produto</a>
                 </li>
               </ul>
             </div>

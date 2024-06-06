@@ -11,12 +11,12 @@ export default defineComponent({
   setup(props) {
     const item = ref("");
     const model = ref("");
-   
+
     const name = ref("");
     const email = ref("");
     const cep = ref("");
     const wpp = ref("");
-    const obs = ref("")
+    const obs = ref("");
 
     const itemError = ref(false);
     const modelError = ref(false);
@@ -26,9 +26,11 @@ export default defineComponent({
     const wppError = ref(false);
 
     async function onSubmit() {
-        console.log(name.value)
-        validate();
+      console.log(name.value);
+      const validated = validate();
+      if (validated) {
         const response = await enviarEmail({
+          tipoOrcamento: "Compra de Perifericos",
           item: item.value,
           model: model.value,
           name: name.value,
@@ -38,25 +40,61 @@ export default defineComponent({
           obs: obs.value,
         });
         if (response) {
-          document.getElementById("tooltip-sucess-periferico").classList.add("show");
+          document
+            .getElementById("tooltip-sucess-periferico")
+            .classList.add("show");
         } else {
-          document.getElementById("tooltip-error-periferico").classList.add("show");
+          document
+            .getElementById("tooltip-error-periferico")
+            .classList.add("show");
         }
+      }
     }
 
     function validate() {
-        item.value.length === 0 || item.value === 'Qual item você deseja comprar'? (itemError.value = true) : (itemError.value = false);
-        model.value.length === 0 ? (modelError.value = true) : (modelError.value = false);
-        name.value.length === 0 ? (nameError.value = true) : (nameError.value = false);
-        email.value.length === 0 ? (emailError.value = true) : (emailError.value = false);
-        cep.value.length === 0 ? (cepError.value = true) : (cepError.value = false);
-        wpp.value.length === 0 ? (wppError.value = true) : (wppError.value = false);
+      let error = false;
+      item.value.length === 0
+        ? ((itemError.value = true), (error = true))
+        : (itemError.value = false);
+      model.value.length === 0
+        ? ((modelError.value = true), (error = true))
+        : (modelError.value = false);
+      name.value.length === 0
+        ? ((nameError.value = true), (error = true))
+        : (nameError.value = false);
+      email.value.length === 0
+        ? ((emailError.value = true), (error = true))
+        : (emailError.value = false);
+      cep.value.length === 0
+        ? ((cepError.value = true), (error = true))
+        : (cepError.value = false);
+      wpp.value.length === 0
+        ? ((wppError.value = true), (error = true))
+        : (wppError.value = false);
+      if (error) {
+        return false;
       }
+      return true;
+    }
 
-    return {obs, item, itemError, model, modelError, name, nameError, email, emailError, cep, cepError, wpp, wppError, onSubmit};
+    return {
+      obs,
+      item,
+      itemError,
+      model,
+      modelError,
+      name,
+      nameError,
+      email,
+      emailError,
+      cep,
+      cepError,
+      wpp,
+      wppError,
+      onSubmit,
+    };
   },
-  template:
-  /*html*/ `
+  template: /*html*/ `
   <div id="tooltip-error-periferico" class="toast align-items-center text-bg-danger border-0 tooltip" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="d-flex">
       <div class="toast-body">
@@ -79,13 +117,12 @@ export default defineComponent({
           <div class="col-6">
           <select v-model="item" :class="['form-select', itemError? 'is-invalid':'']" aria-label="Default base sales">
             <option selected disabled value="">Qual item você deseja comprar</option>
-            <option value="1">Fone de ouvido</option>
-            <option value="2">Mouse</option>
-            <option value="3">Teclado</option>
-            <option value="4">Auditoria e cursos</option>
-            <option value="5">Monitores</option>
-            <option value="6">Impressoras</option>
-            <option value="7">Outros</option>
+            <option value="Fone de ouvido">Fone de ouvido</option>
+            <option value="Mouse">Mouse</option>
+            <option value="Teclado">Teclado</option>
+            <option value="Monitores">Monitores</option>
+            <option value="Impressoras">Impressoras</option>
+            <option value="Outros">Outros</option>
           </select>
           <span class="form-text">*obrigatório</span>
           </div>

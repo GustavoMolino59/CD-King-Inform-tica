@@ -12,20 +12,20 @@ export default defineComponent({
   setup(props) {
     //validacao dos itens
     const item = ref("");
-    const use = ref("")
-    const file = ref(null)
-    const model = ref('')
-    const valueTotal = ref("")
+    const use = ref("");
+    const file = ref(null);
+    const model = ref("");
+    const valueTotal = ref("");
     const name = ref("");
     const email = ref("");
     const cep = ref("");
     const wpp = ref("");
-    const obs = ref("")
+    const obs = ref("");
 
     const itemError = ref(false);
-    const useError = ref(false)
-    
-    const valueTotalError = ref("")
+    const useError = ref(false);
+
+    const valueTotalError = ref("");
     const modelError = ref(false);
     const nameError = ref(false);
     const emailError = ref(false);
@@ -33,34 +33,34 @@ export default defineComponent({
     const wppError = ref(false);
     const selecteds = ref([]);
     const itens = ref([
-        "Placa de video",
-        "Placa mãe",
-        "Memória SSD",
-        "Memória HD",
-        "Fonte",
-        "Cooler",
-        "Water cooler",
-        "Periféricos"
-    ])
+      "Placa de video",
+      "Placa mãe",
+      "Memória SSD",
+      "Memória HD",
+      "Fonte",
+      "Cooler",
+      "Water cooler",
+      "Periféricos",
+    ]);
     function toogleItem(name) {
-        if(selecteds.value.includes(name)){
-            console.log(name)
-            selecteds.value = selecteds.value.filter((item) => item !== name)
-        }else{
-            selecteds.value.push(name)
-        }
-        console.log(selecteds.value)
+      if (selecteds.value.includes(name)) {
+        console.log(name);
+        selecteds.value = selecteds.value.filter((item) => item !== name);
+      } else {
+        selecteds.value.push(name);
+      }
+      console.log(selecteds.value);
     }
 
-    function toggleAll(){
-        if(selecteds.value.length === 8){
-            selecteds.value = []
-        }else{
-            selecteds.value = itens.value;
-        }
+    function toggleAll() {
+      if (selecteds.value.length === 8) {
+        selecteds.value = [];
+      } else {
+        selecteds.value = itens.value;
+      }
     }
-    function isChecked(name){
-        return selecteds.value.includes(name)
+    function isChecked(name) {
+      return selecteds.value.includes(name);
     }
 
     function onFileChange(event) {
@@ -71,42 +71,88 @@ export default defineComponent({
     }
 
     async function onSubmit() {
-        validate();
-        const response = await enviarEmail(
-          {tipoOrcamento: 'Compra de Computadores', 
-            item: item.value,
-            model: model.value,
-            name: name.value,
-            email: email.value,
-            cep: cep.value,
-            wpp: wpp.value,
-            file: file.value,
-            valueTotal: valueTotal.value,
-            selectedItens: selecteds.value,
-            obs: obs.value
-          });
-        console.log(response)
+      const validated = validate();
+      if (validated) {
+        const response = await enviarEmail({
+          tipoOrcamento: "Compra de Computadores",
+          item: item.value,
+          model: model.value,
+          name: name.value,
+          email: email.value,
+          cep: cep.value,
+          wpp: wpp.value,
+          file: file.value,
+          valueTotal: valueTotal.value,
+          selectedItens: selecteds.value,
+          obs: obs.value,
+        });
+        console.log(response);
         if (response) {
           document.getElementById("tooltip-sucess-sales").classList.add("show");
         } else {
           document.getElementById("tooltip-error-sales").classList.add("show");
         }
-        }
+      }
+    }
 
     function validate() {
-        item.value.length === 0  ? (itemError.value = true) : (itemError.value = false);
-        use.value.length === 0  ? (useError.value = true) : (useError.value = false);
-        model.value.length === 0  ? (modelError.value = true) : (modelError.value = false);
-
-        valueTotal.value.length === 0 ? (valueTotalError.value = true) : (valueTotalError.value = false);
-        name.value.length === 0 ? (nameError.value = true) : (nameError.value = false);
-        email.value.length === 0 ? (emailError.value = true) : (emailError.value = false);
-        cep.value.length === 0 ? (cepError.value = true) : (cepError.value = false);
-        wpp.value.length === 0 ? (wppError.value = true) : (wppError.value = false);
+      let error = false;
+      item.value.length === 0
+        ? ((itemError.value = true), (error = true))
+        : (itemError.value = false);
+      use.value.length === 0
+        ? ((useError.value = true), (error = true))
+        : (useError.value = false);
+      model.value.length === 0
+        ? ((modelError.value = true), (error = true))
+        : (modelError.value = false);
+      valueTotal.value.length === 0
+        ? ((valueTotalError.value = true), (error = true))
+        : (valueTotalError.value = false);
+      name.value.length === 0
+        ? ((nameError.value = true), (error = true))
+        : (nameError.value = false);
+      email.value.length === 0
+        ? ((emailError.value = true), (error = true))
+        : (emailError.value = false);
+      cep.value.length === 0
+        ? ((cepError.value = true), (error = true))
+        : (cepError.value = false);
+      wpp.value.length === 0
+        ? ((wppError.value = true), (error = true))
+        : (wppError.value = false);
+      if (error) {
+        return false;
       }
+      return true;
+    }
 
-
-    return{onFileChange, toogleItem, itens, selecteds ,toggleAll, isChecked, obs, use,model, modelError, useError, item, itemError, valueTotal, valueTotalError, name, nameError, email, emailError, cep, cepError, wpp, wppError, onSubmit}
+    return {
+      onFileChange,
+      toogleItem,
+      itens,
+      selecteds,
+      toggleAll,
+      isChecked,
+      obs,
+      use,
+      model,
+      modelError,
+      useError,
+      item,
+      itemError,
+      valueTotal,
+      valueTotalError,
+      name,
+      nameError,
+      email,
+      emailError,
+      cep,
+      cepError,
+      wpp,
+      wppError,
+      onSubmit,
+    };
   },
   template: /*html*/ `
   <div id="tooltip-error-sales" class="toast align-items-center text-bg-danger border-0 tooltip" role="alert" aria-live="assertive" aria-atomic="true">
