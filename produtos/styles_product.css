@@ -136,6 +136,19 @@ a{
       
     }
   }
+
+  @media (max-width: 575px) {
+    .carousel-item {
+      margin-right: 0;
+      flex: 0 0 80%;
+      display: block;
+    }
+    .carousel-inner {
+      display: flex 
+    }
+  }
+  
+
   @media (min-width: 768px) {
     
     .carousel-control-prev {
@@ -163,4 +176,10 @@ a{
 
   .icon {
     margin-left: 0; /* Ajuste este valor conforme necessário */
+}
+
+.img-wrapper-carrosel img {
+  max-height: 500px; /* Altere este valor conforme necessário */
+  width: auto;
+  object-fit: cover; /* Isso garante que a imagem cubra todo o espaço disponível sem distorcer */
 }
