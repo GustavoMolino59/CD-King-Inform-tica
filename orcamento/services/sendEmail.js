@@ -15,10 +15,10 @@ export default async function enviarEmail({
     try {
       const emailParams = {
         Host: "smtp.elasticemail.com",
-        Username: "guga.molino@gmail.com",
-        Password: "4D101FD44F73D869867F45F82A54102FDAE5",
-        To: "guga.molino@gmail.com",
-        From: "guga.molino@gmail.com",
+        Username: "orcamento@cdking.com.br",
+        Password: "169AFF5596A9AD1F47431AFCCB0298E9238E",
+        To: "orcamento@cdking.com.br",
+        From: "orcamento@cdking.com.br",
         Subject: `Orçamento de ${name} sobre ${tipoOrcamento}`,
       };
       emailParams.Body = makeEmailBody({
