@@ -73,6 +73,7 @@ export default defineComponent({
     async function onSubmit() {
       const validated = validate();
       if (validated) {
+        console.log('passou por aqui')
         const response = await enviarEmail({
           tipoOrcamento: "Compra de Computadores",
           item: item.value,
@@ -86,7 +87,6 @@ export default defineComponent({
           selectedItens: selecteds.value,
           obs: obs.value,
         });
-        console.log(response);
         if (response) {
           document.getElementById("tooltip-sucess-sales").classList.add("show");
         } else {
@@ -296,15 +296,15 @@ export default defineComponent({
         <div class="row">
           <div class="col">
             <div class="form-floating">
-              <textarea class="form-control" placeholder="Observações" id="TextAreaObs" style="height: 100px"></textarea>
-              <label v-model="obs" for="TextAreaObs">Observações</label>
+              <textarea v-model="obs" class="form-control" placeholder="Observações" id="TextAreaObs" style="height: 100px"></textarea>
+              <label  for="TextAreaObs">Observações</label>
               <span class="form-text">*obrigatório</span>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-12 text-center">
-            <button class="btn btn-primary btn-lg rounded-5" @click="onSubmit"> Enviar </button>
+            <button class="btn btn-primary btn-lg rounded-5" type="submit"> Enviar </button>
           </div>
         </div>
       </form>

@@ -175,7 +175,7 @@ export default defineComponent({
         </div>
         <div class="row">
           <div class="col-12 text-center">
-            <button class="btn btn-primary btn-lg rounded-5" @click="onSubmit"> Enviar </button>
+            <button class="btn btn-primary btn-lg rounded-5" type="submit"> Enviar </button>
           </div>
         </div>
       </form>
