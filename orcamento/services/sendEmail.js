@@ -46,10 +46,11 @@ export default async function enviarEmail({
           },
         ];
       }
-  
+      
+      console.log(emailParams)
       // Enviar email
       const response = await Email.send(emailParams);
-      console.log(response)
+      console.log('email: orcamento ' + response)
       if(response == 'Failure sending mail.'){
         return false
       } else{

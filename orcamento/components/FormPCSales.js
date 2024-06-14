@@ -172,6 +172,7 @@ export default defineComponent({
     </div>
   </div>
     <div :class="{collapse: !viewToMe}">
+    <h1>Teste</h1>
       <form class="p-2"  @submit.prevent="onSubmit" novalidate>
         <div class="row"> 
           <div class="col-6">
